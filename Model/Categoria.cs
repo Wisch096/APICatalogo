@@ -1,9 +1,8 @@
-﻿namespace APICatalogo.Model
+﻿namespace APICatalogo.Model;
+
+public class Categoria
 {
-    public class Categoria
-    {
-        public int CategoriaId { get; set; }
-        public string? Nome { get; set; }
-        public string? imagemUrl { get;}
-    }
+    public int CategoriaId { get; set; }
+    public string? Nome { get; set; }
+    public string? imagemUrl { get;}
 }
