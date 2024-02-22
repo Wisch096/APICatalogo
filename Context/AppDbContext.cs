@@ -1,6 +1,8 @@
-﻿namespace APICatalogo.Context;
+﻿using Microsoft.EntityFrameworkCore;
 
-public class AppDbContext
+namespace APICatalogo.Context;
+
+public class AppDbContext : DbContext
 {
     
 }
