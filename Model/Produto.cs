@@ -18,7 +18,6 @@ public class Produto
     public string? Descricao { get; set; }
     
     [Required]
-    [Column(TypeName = "decimal(10,2)")]
     public string? Preco { get; set; }
     
     [Required]
