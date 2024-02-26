@@ -1,4 +1,5 @@
 ﻿using APICatalogo.Context;
+using APICatalogo.Model;
 using Microsoft.AspNetCore.Mvc;
 
 namespace APICatalogo.Controllers;
@@ -12,5 +13,16 @@ public class ProdutosController : ControllerBase
     public ProdutosController(AppDbContext context)
     {
         _context = context;
+    }
+
+    [HttpGet]
+    public ActionResult<IEnumerable<Produto>> Get()
+    {
+        var produtos = _context.Produtos.ToList();
+        if (produtos is null)
+        {
+            return NotFound("Produtos não encontrados"); 
+        }
+        return produtos;
     }
 }
