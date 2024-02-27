@@ -2,6 +2,7 @@
 using APICatalogo.Model;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace APICatalogo.Controllers;
 
@@ -43,5 +44,30 @@ public class CategoriasController : ControllerBase
         _context.SaveChanges();
 
         return new CreatedAtRouteResult("ObterCategoria", new { id = categoria.CategoriaId }, categoria);
+    }
+
+    [HttpPut("{id:int}")]
+    public ActionResult Put(int id, Categoria categoria)
+    {
+        if (id != categoria.CategoriaId)
+            return BadRequest();
+
+        _context.Entry(categoria).State = EntityState.Modified;
+        _context.SaveChanges();
+        return Ok(categoria);
+    }
+    
+    [HttpDelete("{id:int}")]
+    public ActionResult Delete(int id)
+    {
+        var categoria = _context.Categoria.FirstOrDefault(p => p.CategoriaId == id);
+        
+        if (categoria is null)
+            return NotFound();
+
+        _context.Categoria.Remove(categoria);
+        _context.SaveChanges();
+
+        return Ok(categoria);
     }
 }
