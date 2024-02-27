@@ -32,6 +32,16 @@ public class CategoriasController : ControllerBase
 
         return Ok(categoria);
     }
-    
-    
+
+    [HttpPost]
+    public ActionResult Post(Categoria categoria)
+    {
+        if (categoria is null)
+            return BadRequest();
+
+        _context.Categoria.Add(categoria);
+        _context.SaveChanges();
+
+        return new CreatedAtRouteResult("ObterCategoria", new { id = categoria.CategoriaId }, categoria);
+    }
 }
