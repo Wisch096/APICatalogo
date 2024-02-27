@@ -17,6 +17,12 @@ public class CategoriasController : ControllerBase
         _context = context;
     }
 
+    [HttpGet("produtos")]
+    public ActionResult<IEnumerable<Categoria>> GetCategoriasProdutos()
+    {
+        return _context.Categoria.Include(p => p.Produtos).ToList();
+    }
+
     [HttpGet]
     public ActionResult<IEnumerable<Categoria>> Get()
     {
