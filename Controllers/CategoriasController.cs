@@ -29,18 +29,35 @@ public class CategoriasController : ControllerBase
     [HttpGet]
     public ActionResult<IEnumerable<Categoria>> Get()
     {
-        return _context.Categoria.ToList();
+        try
+        {
+            return _context.Categoria.ToList();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+        
     }
 
     [HttpGet("{id:int}", Name = "ObterCategoria")]
     public ActionResult<Categoria> Get(int id)
     {
-        var categoria = _context.Categoria.FirstOrDefault(p => p.CategoriaId == id);
+        try
+        {
+            var categoria = _context.Categoria.FirstOrDefault(p => p.CategoriaId == id);
 
-        if (categoria == null) 
-            return NotFound();
+            if (categoria == null) 
+                return NotFound();
 
-        return Ok(categoria);
+            return Ok(categoria);
+        }
+        catch (Exception e)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Ocorreu um problema");
+        }
+        
     }
 
     [HttpPost]
