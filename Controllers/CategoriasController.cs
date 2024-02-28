@@ -20,7 +20,10 @@ public class CategoriasController : ControllerBase
     [HttpGet("produtos")]
     public ActionResult<IEnumerable<Categoria>> GetCategoriasProdutos()
     {
-        return _context.Categoria.Include(p => p.Produtos).ToList();
+        return _context.Categoria
+            .Include(p => p.Produtos)
+            .AsNoTracking()
+            .ToList();
     }
 
     [HttpGet]
