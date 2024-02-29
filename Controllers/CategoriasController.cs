@@ -41,12 +41,12 @@ public class CategoriasController : ControllerBase
         
     }
 
-    [HttpGet("{id:int:min(1)}", Name = "ObterCategoria")]
-    public ActionResult<Categoria> Get(int id)
+    [HttpGet("{id:int}", Name = "ObterCategoria")]
+    public async Task<ActionResult<Categoria>> Get(int id)
     {
         try
         {
-            var categoria = _context.Categoria.FirstOrDefault(p => p.CategoriaId == id);
+            var categoria = await _context.Categoria.FirstOrDefaultAsync(p => p.CategoriaId == id);
 
             if (categoria == null) 
                 return NotFound();
