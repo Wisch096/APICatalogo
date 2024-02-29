@@ -41,7 +41,7 @@ public class CategoriasController : ControllerBase
         
     }
 
-    [HttpGet("{id:int}", Name = "ObterCategoria")]
+    [HttpGet("{id:int:min(1)}", Name = "ObterCategoria")]
     public ActionResult<Categoria> Get(int id)
     {
         try
