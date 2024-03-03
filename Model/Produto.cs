@@ -47,5 +47,14 @@ public class Produto : IValidatableObject
                     );
             }
         }
+
+        if (this.Estoque <= 0)
+        {
+            yield return new
+                ValidationResult("O estoque deve ser maior que 0",
+                    new[]
+                        { nameof(this.Nome) }
+                );
+        }
     }
 }
