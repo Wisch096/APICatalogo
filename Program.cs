@@ -2,6 +2,7 @@ using System.Text.Json.Serialization;
 using APICatalogo.Context;
 using APICatalogo.Extensions;
 using APICatalogo.Filters;
+using APICatalogo.Repositories;
 using APICatalogo.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -31,6 +32,7 @@ var app = builder.Build();
 
 builder.Services.AddTransient<IMeuServico, MeuServico>();
 builder.Services.AddScoped<ApiLoggingFilter>();
+builder.Services.AddScoped<ICategoriaRepository, CategoriasRepository>();
 
 if (app.Environment.IsDevelopment())
 {
