@@ -33,6 +33,7 @@ var app = builder.Build();
 builder.Services.AddTransient<IMeuServico, MeuServico>();
 builder.Services.AddScoped<ApiLoggingFilter>();
 builder.Services.AddScoped<ICategoriaRepository, CategoriasRepository>();
+builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
 
 if (app.Environment.IsDevelopment())
 {
