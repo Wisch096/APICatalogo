@@ -11,10 +11,10 @@ namespace APICatalogo.Controllers;
 [ApiController]
 public class CategoriasController : ControllerBase
 {
-    private readonly ICategoriaRepository _repository;
+    private readonly IRepository<Categoria> _repository;
     private readonly IConfiguration _configuration;
 
-    public CategoriasController(ICategoriaRepository repository, IConfiguration configuration)
+    public CategoriasController(IRepository<Categoria> repository, IConfiguration configuration)
     {
         _repository = repository;
         _configuration = configuration;
@@ -33,26 +33,19 @@ public class CategoriasController : ControllerBase
     [HttpGet]
     public ActionResult<IEnumerable<Categoria>> Get()
     {
-        var categorias = _repository.GetCategorias();
+        var categorias = _repository.GetAll();
         return Ok(categorias);
     }
 
     [HttpGet("{id:int}", Name = "ObterCategoria")]
     public  ActionResult<Categoria> Get(int id)
     {
-        try
-        {
-            var categoria = _repository.GetCategoria(id);
-
-            if (categoria is null) 
-                return NotFound();
-
-            return Ok(categoria);
-        }
-        catch (Exception e)
-        {
-            return StatusCode(StatusCodes.Status500InternalServerError, "Ocorreu um problema");
-        }
+        var categoria = _repository.Get(c => c.CategoriaId == id);
+        if (categoria is null) 
+            return NotFound();
+        
+        return Ok(categoria);
+            
         
     }
 
@@ -80,12 +73,12 @@ public class CategoriasController : ControllerBase
     [HttpDelete("{id:int}")]
     public ActionResult Delete(int id)
     {
-        var categoria = _repository.GetCategoria(id);
+        var categoria = _repository.Get(c => c.CategoriaId == id);
         
         if (categoria is null)
             return NotFound();
 
-        var categoriaExcluida = _repository.Delete(id);
+        var categoriaExcluida = _repository.Delete(categoria);
         return Ok(categoriaExcluida);
     }
 }
