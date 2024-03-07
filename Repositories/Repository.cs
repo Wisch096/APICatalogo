@@ -6,6 +6,11 @@ namespace APICatalogo.Repositories;
 public class Repository<T> : IRepository<T> where T : class
 {
     protected readonly AppDbContext _context;
+
+    protected Repository(AppDbContext context)
+    {
+        _context = context;
+    }
     
     public IEnumerable<T> GetAll()
     {
