@@ -1,4 +1,5 @@
 ﻿using APICatalogo.Context;
+using APICatalogo.DTOs;
 using APICatalogo.Model;
 using APICatalogo.Repositories;
 using APICatalogo.Services;
@@ -31,40 +32,60 @@ public class CategoriasController : ControllerBase
     
 
     [HttpGet]
-    public ActionResult<IEnumerable<Categoria>> Get()
+    public ActionResult<IEnumerable<CategoriaDTO>> Get()
     {
         var categorias = _uof.CategoriaRepository.GetAll();
         return Ok(categorias);
     }
 
     [HttpGet("{id:int}", Name = "ObterCategoria")]
-    public  ActionResult<Categoria> Get(int id)
+    public  ActionResult<CategoriaDTO> Get(int id)
     {
         var categoria = _uof.CategoriaRepository.Get(c => c.CategoriaId == id);
         if (categoria is null) 
             return NotFound();
-        
+
+        var categoriaDto = new CategoriaDTO()
+        {
+            Id = categoria.CategoriaId,
+            Nome = categoria.Nome,
+            ImagemUrl = categoria.imagemUrl
+        };
         return Ok(categoria);
     }
 
     [HttpPost]
-    public ActionResult Post(Categoria categoria)
+    public ActionResult<CategoriaDTO> Post(CategoriaDTO categoriaDto)
     {
-        if (categoria is null)
+        if (categoriaDto is null)
             return BadRequest();
 
+        var categoria = new Categoria()
+        {
+            CategoriaId = categoriaDto.Id,
+            Nome = categoriaDto.Nome,
+            imagemUrl = categoriaDto.ImagemUrl
+        };
+        
         var categoriaCriada =_uof.CategoriaRepository.Create(categoria);
         _uof.Commit();
 
-        return new CreatedAtRouteResult("ObterCategoria", new { id = categoria.CategoriaId }, categoriaCriada);
+        return new CreatedAtRouteResult("ObterCategoria", new { id = categoriaCriada.CategoriaId }, categoriaCriada);
     }
 
     [HttpPut("{id:int}")]
-    public ActionResult Put(int id, Categoria categoria)
+    public ActionResult Put(int id, CategoriaDTO categoriaDto)
     {
-        if (id != categoria.CategoriaId)
+        if (id != categoriaDto.Id)
             return BadRequest();
-
+        
+        var categoria = new Categoria()
+        {
+            CategoriaId = categoriaDto.Id,
+            Nome = categoriaDto.Nome,
+            imagemUrl = categoriaDto.ImagemUrl
+        };
+        
         _uof.CategoriaRepository.Update(categoria);
         _uof.Commit();
         return Ok(categoria);
