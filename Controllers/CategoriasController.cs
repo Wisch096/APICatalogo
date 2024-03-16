@@ -29,7 +29,6 @@ public class CategoriasController : ControllerBase
 
         return $"{valor1} + {valor2}";
     }
-    
 
     [HttpGet]
     public ActionResult<IEnumerable<CategoriaDTO>> Get()
