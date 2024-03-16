@@ -31,6 +31,11 @@ public class UnitOfWork : IUnitOfWork
 
     public void Commit()
     {
-        throw new NotImplementedException();
+        _context.SaveChanges();
+    }
+
+    public void Dispose()
+    {
+        _context.Dispose();
     }
 }
