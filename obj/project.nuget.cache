@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "BvgFsabrQLJxbdGiPuWl8aVl59nP/5L8FB0xl9TgGFgFhyK+SXh0g5BkIv6B6o7o8jKqSyxZbAIoAmDCtMFFmA==",
+  "dgSpecHash": "m97lt02dHrhFpq7sCzy6IS8FTeJy1XlmHQeAPmykqXOSY7JvQH/3yaMU1LKif//lHUcEEx5aXqsPPBKDb53O4Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\wisch\\source\\repos\\APICatalogo\\APICatalogo\\APICatalogo.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\wisch\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\wisch\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\wisch\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\wisch\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.11\\microsoft.aspnetcore.openapi.7.0.11.nupkg.sha512",
+    "C:\\Users\\wisch\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\wisch\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.16\\microsoft.entityframeworkcore.7.0.16.nupkg.sha512",
     "C:\\Users\\wisch\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.16\\microsoft.entityframeworkcore.abstractions.7.0.16.nupkg.sha512",
     "C:\\Users\\wisch\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.16\\microsoft.entityframeworkcore.analyzers.7.0.16.nupkg.sha512",
