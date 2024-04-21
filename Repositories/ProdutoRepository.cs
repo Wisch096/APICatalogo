@@ -16,7 +16,7 @@ public class ProdutoRepository : Repository<Produto>, IProdutoRepository
    public IEnumerable<Produto> GetProdutos(ProdutosParameters produtosParams)
    {
       return GetAll()
-         .OrderBy(P => P.Nome)
+         .OrderBy(p => p.Nome)
          .Skip((produtosParams.PageNumber - 1) * produtosParams.PageSize)
          .Take(produtosParams.PageSize).ToList();
    }
