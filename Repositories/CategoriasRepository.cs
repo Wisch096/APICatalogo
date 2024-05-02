@@ -7,20 +7,20 @@ namespace APICatalogo.Repositories;
 
 public class CategoriasRepository : Repository<Categoria>, ICategoriaRepository
 {
-
     public CategoriasRepository(AppDbContext context) : base(context)
     {
     }
 
-    public PagedList<Categoria> GetCategorias(CategoriasParameters categoriasParams)
+    public async Task<PagedList<Categoria>> GetCategoriasAsync(CategoriasParameters categoriasParams)
     {
-        var categorias = GetAll()
-            .OrderBy(p => p.CategoriaId)
+        var categorias = await GetAllAsync();
+
+        var categoriasOrdenadas = categorias.OrderBy(p => p.CategoriaId)
             .AsQueryable();
 
-        var categoriasOrdenadas =
-            PagedList<Categoria>.ToPagedList(categorias, categoriasParams.PageNumber, categoriasParams.PageSize);
+        var resultado =
+            PagedList<Categoria>.ToPagedList(categoriasOrdenadas, categoriasParams.PageNumber, categoriasParams.PageSize);
 
-        return categoriasOrdenadas;
+        return resultado;
     }
 }
