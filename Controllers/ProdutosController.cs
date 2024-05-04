@@ -26,9 +26,9 @@ public class ProdutosController : ControllerBase
     }
 
     [HttpGet("produtos/{id}")]
-    public ActionResult<IEnumerable<ProdutoDTO>> GetProdutosCategoria(int id)
+    public async Task<ActionResult<IEnumerable<ProdutoDTO>>> GetProdutosCategoria(int id)
     {
-        var produtos = _uof.ProdutoRepository.GetProdutosPorCategoria(id);
+        var produtos = await _uof.ProdutoRepository.GetProdutosPorCategoriaAsync(id);
         if (produtos is null)
             return NotFound();
 
@@ -38,9 +38,9 @@ public class ProdutosController : ControllerBase
     }
 
     [HttpGet("pagination")]
-    public ActionResult<IEnumerable<ProdutoDTO>> Get([FromQuery] ProdutosParameters produtosParameters)
+    public async Task<ActionResult<IEnumerable<ProdutoDTO>>> Get([FromQuery] ProdutosParameters produtosParameters)
     {
-        var produtos = _uof.ProdutoRepository.GetProdutos(produtosParameters);
+        var produtos = await _uof.ProdutoRepository.GetProdutosAsync(produtosParameters);
 
         var metadata = new
         {
@@ -59,9 +59,9 @@ public class ProdutosController : ControllerBase
     }
 
     [HttpGet]
-    public ActionResult<IEnumerable<ProdutoDTO>> Get()
+    public async Task<ActionResult<IEnumerable<ProdutoDTO>>> Get()
     {
-        var produtos = _uof.ProdutoRepository.GetAll();
+        var produtos = await _uof.ProdutoRepository.GetAllAsync();
         
         if (produtos is null)
             return NotFound("Produtos não encontrados"); 
@@ -72,9 +72,9 @@ public class ProdutosController : ControllerBase
     }
 
     [HttpGet("{id:int}", Name="ObterProduto")]
-    public ActionResult<ProdutoDTO> Get(int id)
+    public async Task<ActionResult<ProdutoDTO>> Get(int id)
     {
-        var produto = _uof.ProdutoRepository.Get(c => c.ProdutoId == id);
+        var produto = await _uof.ProdutoRepository.GetAsync(c => c.ProdutoId == id);
         
         if (produto is null)
             return NotFound();
@@ -115,9 +115,9 @@ public class ProdutosController : ControllerBase
     }
 
     [HttpDelete("{id:int}")]
-    public ActionResult<ProdutoDTO> Delete(int id)
+    public async Task<ActionResult<ProdutoDTO>> Delete(int id)
     {
-        var produto = _uof.ProdutoRepository.Get(p => p.ProdutoId == id);
+        var produto = await _uof.ProdutoRepository.GetAsync(p => p.ProdutoId == id);
         if (produto is null)
             return NotFound();
 
