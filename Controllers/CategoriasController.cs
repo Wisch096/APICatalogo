@@ -33,16 +33,16 @@ public class CategoriasController : ControllerBase
     }
 
     [HttpGet]
-    public ActionResult<IEnumerable<CategoriaDTO>> Get()
+    public async Task<ActionResult<IEnumerable<CategoriaDTO>>> Get()
     {
-        var categorias = _uof.CategoriaRepository.GetAll();
+        var categorias = await _uof.CategoriaRepository.GetAllAsync();
         return Ok(categorias);
     }
 
     [HttpGet("pagination")]
-    public ActionResult<IEnumerable<CategoriaDTO>> Get([FromQuery] CategoriasParameters categoriasParameters)
+    public async Task<ActionResult<IEnumerable<CategoriaDTO>>> Get([FromQuery] CategoriasParameters categoriasParameters)
     {
-        var categorias = _uof.CategoriaRepository.GetCategorias(categoriasParameters);
+        var categorias = await _uof.CategoriaRepository.GetCategoriasAsync(categoriasParameters);
         var metadata = new
         {
             categorias.TotalCount,
@@ -60,9 +60,9 @@ public class CategoriasController : ControllerBase
     }
 
     [HttpGet("{id:int}", Name = "ObterCategoria")]
-    public  ActionResult<CategoriaDTO> Get(int id)
+    public async Task<ActionResult<CategoriaDTO>> Get(int id)
     {
-        var categoria = _uof.CategoriaRepository.Get(c => c.CategoriaId == id);
+        var categoria = await _uof.CategoriaRepository.GetAsync(c => c.CategoriaId == id);
         if (categoria is null) 
             return NotFound();
 
@@ -113,9 +113,9 @@ public class CategoriasController : ControllerBase
     }
     
     [HttpDelete("{id:int}")]
-    public ActionResult Delete(int id)
+    public async Task<ActionResult> Delete(int id)
     {
-        var categoria = _uof.CategoriaRepository.Get(c => c.CategoriaId == id);
+        var categoria = await  _uof.CategoriaRepository.GetAsync(c => c.CategoriaId == id);
         
         if (categoria is null)
             return NotFound();
