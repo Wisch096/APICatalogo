@@ -42,3 +42,15 @@ C:\Users\wisch\source\repos\APICatalogo\APICatalogo\obj\Debug\net8.0\refint\APIC
 C:\Users\wisch\source\repos\APICatalogo\APICatalogo\obj\Debug\net8.0\APICatalogo.pdb
 C:\Users\wisch\source\repos\APICatalogo\APICatalogo\obj\Debug\net8.0\APICatalogo.genruntimeconfig.cache
 C:\Users\wisch\source\repos\APICatalogo\APICatalogo\obj\Debug\net8.0\ref\APICatalogo.dll
+C:\Users\wisch\source\repos\APICatalogo\APICatalogo\bin\Debug\net8.0\AutoMapper.dll
+C:\Users\wisch\source\repos\APICatalogo\APICatalogo\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\wisch\source\repos\APICatalogo\APICatalogo\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\wisch\source\repos\APICatalogo\APICatalogo\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\wisch\source\repos\APICatalogo\APICatalogo\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\wisch\source\repos\APICatalogo\APICatalogo\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\wisch\source\repos\APICatalogo\APICatalogo\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\wisch\source\repos\APICatalogo\APICatalogo\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\wisch\source\repos\APICatalogo\APICatalogo\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\wisch\source\repos\APICatalogo\APICatalogo\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\wisch\source\repos\APICatalogo\APICatalogo\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\wisch\source\repos\APICatalogo\APICatalogo\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
