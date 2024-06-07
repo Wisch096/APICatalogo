@@ -67,6 +67,7 @@ if (app.Environment.IsDevelopment())
     app.ConfigureExceptionHandler();
 }
 
+app.UseRateLimiter();
 app.UseCors();
 app.UseHttpsRedirection();
 app.UseAuthorization();
